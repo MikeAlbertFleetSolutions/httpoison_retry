@@ -55,7 +55,7 @@ defmodule HTTPoison.Retry do
             response
           end
         # OK conditions
-        {:ok, %HTTPoison.Response{status_code: 500}} ->
+        {:ok, %HTTPoison.Response{status_code: 502}} ->
           HTTPoison.Retry.next_attempt(attempt_fn, opts)
         {:ok, %HTTPoison.Response{status_code: 404}} = response ->
           if Keyword.get(opts, :include_404s) do
